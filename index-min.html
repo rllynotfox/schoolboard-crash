@@ -45,24 +45,32 @@
             position: absolute;
             width: 1200px;
             height: 1700px;
-            background-color: rgba(35,35,35,0.7);
+            background-color: rgb(35,35,35);
             font-size: 50px;
             top: 5px;
             word-break: break-all;
             right: 5px;
             padding: 9px;
+            color: yellow;
+            opacity: 0.7;
         }
 
         .info {
             font-size: 50px;
             position: absolute;
             bottom: 100px;
+            color: black;
             left: 140px;
         }
 
         .link {
             text-decoration: underline;
             color: #069;
+        }
+
+        .ver {
+            margin-left: 3100px;
+            color: white;
         }
     </style>
 </head>
@@ -72,6 +80,7 @@
         <div class="reload"></div>
         <div class="console">Please wait loading</div>
         <div class="info">Для дополнительной информации обратитесь по ссылке <span class="link">https://www.mos.ru/feedback/support/</span><div>
+        <div class="ver">Сборка v2021.2.86</div>
     </div>
     <script>
         (async() => {
@@ -84,23 +93,23 @@
         document.querySelector(".reload").onclick = () => location = location
         const delay = sec => new Promise(r => setTimeout(r, sec*1000))
         const cnsl = document.querySelector(".console")
-        cnsl.innerHTML = `[${new Date().toISOString().split("T")[1].replace("Z", "")}] Error! \"schoolshell/Binaries/shelldata.dll\" wasn't loaded<br>[${new Date(Date.now() + 63).toISOString().split("T")[1].replace("Z", "")}] Opening error page...`
+        cnsl.innerHTML = `<span style="color:red">[${new Date(Date.now() + 10800000).toISOString().split("T")[1].replace("Z", "")}] Error! \"schoolshell/Binaries/shelldata.dll\" wasn't loaded<br>[${new Date(Date.now() + 10800063).toISOString().split("T")[1].replace("Z", "")}] Opening error page...</span>`
         await delay(1.4)
         let msg = [
             "Retrying...",
-            "Load \"schoolshell/x64/system.sys\"",
-            "Load \"schoolshell/x64/pagefile.sys\"",
-            "Load \"schoolshell/x64/Gfrce.drv\"",
-            "Load \"schoolshell/Binaries/system.sys\"",
-            "Load \"schoolshell/Binaries/interface.dat\"",
-            "Load \"schoolshell/Binaries/shelldata.dll\""
+            "Load <span style=\"color:yellowgreen\">\"schoolshell/x64/system.sys\"</span>",
+            "Load <span style=\"color:yellowgreen\">\"schoolshell/x64/pagefile.sys\"</span>",
+            "Load <span style=\"color:yellowgreen\">\"schoolshell/x64/Gfrce.drv\"</span>",
+            "Load <span style=\"color:yellowgreen\">\"schoolshell/Binaries/system.sys\"</span>",
+            "Load <span style=\"color:yellowgreen\">\"schoolshell/Binaries/interface.dat\"</span>",
+            "Load <span style=\"color:yellowgreen\">\"schoolshell/Binaries/shelldata.dll\"</span>"
         ]
         for(let numb in msg) {
             await delay(Math.random() * 0.4)
-            cnsl.innerHTML += `<br>[${new Date().toISOString().split("T")[1].replace("Z", "")}] ${msg[numb]}`
+            cnsl.innerHTML += `<br>[${new Date(Date.now() + 10800000).toISOString().split("T")[1].replace("Z", "")}] ${msg[numb]}`
         }
         await delay(1.46);
-        cnsl.innerHTML += `<br>[${new Date().toISOString().split("T")[1].replace("Z", "")}] Error! \"schoolshell/Binaries/shelldata.dll\" wasn't loaded`
+        cnsl.innerHTML += `<br><span style="color:red">[${new Date(Date.now() + 10800000).toISOString().split("T")[1].replace("Z", "")}] Error! \"schoolshell/Binaries/shelldata.dll\" wasn't loaded</span>`
         })()
     </script>
 </body>
